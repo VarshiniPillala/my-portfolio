@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Varshini Pillala | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6c63ff;
+      --primary-light: #a5a1ff;
+      --dark: #2d3748;
+      --light: #f8fafc;
+      --gray: #4a5568;
+      --background: #ffffff;
+      --card-bg: #f9f9ff;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--background);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-weight: 700;
+      color: var(--primary);
+      font-size: 1.5rem;
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+    
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    
+    /* Page Container */
+    .page {
+      min-height: 100vh;
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Home Page */
+    #home {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 3rem;
+    }
+    
+    .profile-content {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .profile-img {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+    
+    .profile-img img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border: 5px solid white;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      line-height: 1.2;
+    }
+    
+    .highlight {
+      color: var(--primary);
+    }
+    
+    .subtitle {
+      font-size: 1.5rem;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+    
+    .contact-info {
+      margin-top: 2rem;
+    }
+    
+    .contact-info a {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    .contact-info a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+    
+    .contact-info i {
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+	
+    
+    /* Section Styling */
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: var(--primary-light);
+      border-radius: 2px;
+    }
+    
+    /* Education Page */
+    .education-item {
+      margin-bottom: 3rem;
+      padding-left: 2rem;
+      border-left: 3px solid var(--primary-light);
+    }
+    
+    /* Skills Page */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .skill-category {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
+    
+    .skill-category:hover {
+      transform: translateY(-5px);
+    }
+    
+    .skill-category h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .skill-category h3 i {
+      font-size: 1.2rem;
+    }
+    
+    .skill-items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .skill-item {
+      background: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    /* Projects Page */
+    .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(108, 99, 255, 0.1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(108, 99, 255, 0.1);
+  }
+
+  .project-header {
+    margin-bottom: 1rem;
+  }
+
+  .project-header h3 {
+    color: var(--dark);
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .project-tech {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .tech-tag {
+    background: rgba(108, 99, 255, 0.1);
+    color: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .project-desc {
+    color: var(--gray);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+  }
+
+  .project-features {
+    padding-left: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .project-features li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    color: var(--dark);
+  }
+
+  .project-features li::before {
+    content: "▹";
+    position: absolute;
+    left: -1.2rem;
+    color: var(--primary);
+  }
+
+  .github-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+  }
+
+  .github-link:hover {
+    background: #554de8;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(108, 99, 255, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+    
+    /* Certifications Page */
+    .certifications-list {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .certification-item {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    border-left: 4px solid #6c63ff;
+    transition: transform 0.3s;
+  }
+
+  .certification-item:hover {
+    transform: translateY(-3px);
+  }
+
+  .certification-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+  }
+
+  .certification-header h3 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    font-weight: 600;
+  }
+
+  .date {
+    color: #4a5568;
+    font-size: 0.9rem;
+    background: #f8fafc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+  }
+
+  .certification-item p {
+    color: #4a5568;
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+  }
+
+  .cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: #f8fafc;
+    color: #2d3748;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+
+  .cert-link:hover {
+    background: #edf2f7;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  .cert-link i {
+    color: #e74c3c; /* Red color for PDF icon */
+  }
+
+  @media (max-width: 768px) {
+    .certification-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .date {
+      align-self: flex-end;
+    }
+  }
+    
+    /* Experience Page */
+    .experience-item {
+      margin-bottom: 3rem;
+      padding: 1.5rem;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .experience-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+    
+    /* Hide all pages except home initially */
+    .page:not(#home) {
+      display: none;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">VP</a>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Home Page -->
+  <div id="home" class="page">
+  <div class="profile-content">
+    <h1>Hi, I'm <span class="highlight">Varshini Pillala</span></h1>
+    <p class="subtitle">AI/ML Enthusiast | Full-Stack Developer | Problem Solver</p>
+    <p>I'm passionate about building intelligent systems and solving complex problems through technology.</p>
+    
+    <div class="contact-info">
+      <a href="mailto:varshinipillala14@gmail.com"><i class="fas fa-envelope"></i> varshinipillala14@gmail.com</a>
+      <a href="tel:+919398873343"><i class="fas fa-phone"></i> +91 9398873343</a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="#" target="_blank"><i class="fas fa-code"></i> LeetCode</a>
+    </div>
+  </div>
+  
+  <div class="profile-img-container">
+    <div class="profile-img-wrapper">
+      <img src="https://drive.google.com/thumbnail?id=1GXBlITKCeomOU5UVGSeJZAxuFJ21Pysm&sz=w400" 
+           alt="Varshini Pillala"
+           class="profile-photo">
+    </div>
+  </div>
+</div>
+
+  <!-- Education Page -->
+  <div id="education" class="page">
+    <h2 class="section-title">Education</h2>
+    
+    <div class="education-item">
+      <h3>B.Tech in Computer Science & Engineering (AI & ML)</h3>
+      <p class="date">2022–2026 | Kakatiya Institute of Technology and Science, Warangal</p>
+      <p><strong>GPA:</strong> 7.87</p>
+    </div>
+    
+    <div class="education-item">
+      <h3>Intermediate (MPC)</h3>
+      <p class="date">2020–2022 | Sri Chaitanya Junior College</p>
+      <p><strong>Score:</strong> 97.9%</p>
+    </div>
+  </div>
+
+  <!-- Skills Page -->
+  <div id="skills" class="page">
+    <h2 class="section-title">Technical Skills</h2>
+    
+    <div class="skills-container">
+      <div class="skill-category">
+        <h3><i class="fas fa-code"></i> Programming</h3>
+        <div class="skill-items">
+          <span class="skill-item">Python</span>
+          <span class="skill-item">Java</span>
+          <span class="skill-item">C</span>
+          <span class="skill-item">HTML/CSS</span>
+          <span class="skill-item">JavaScript</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-robot"></i> AI/ML</h3>
+        <div class="skill-items">
+          <span class="skill-item">Machine Learning</span>
+          <span class="skill-item">Deep Learning</span>
+          <span class="skill-item">NLP</span>
+          <span class="skill-item">Computer Vision</span>
+          <span class="skill-item">TensorFlow</span>
+        </div>
+      </div>
+      
+      <div class="skill-category">
+        <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+        <div class="skill-items">
+          <span class="skill-item">Git</span>
+          <span class="skill-item">VS Code</span>
+          <span class="skill-item">MySQL</span>
+          <span class="skill-item">Jupyter Notebook</span>
+          <span class="skill-item">React</span>
+          <span class="skill-item">Flask</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Experience Page -->
+  <div id="experience" class="page">
+    <h2 class="section-title">Experience</h2>
+    
+    <div class="experience-item">
+      <div class="experience-header">
+        <h3>AI Intern — LearnFlow Technologies</h3>
+        <span class="date">Jun 2024 - Jul 2024</span>
+      </div>
+      <ul>
+        <li>Developed an image recognizer for real-time applications using deep learning</li>
+        <li>Achieved high precision in object detection and classification</li>
+        <li>Optimized model performance for mobile deployment</li>
+      </ul>
+    </div>
+    
+    <div class="experience-item">
+      <div class="experience-header">
+        <h3>ML Intern — Tech Saksham (AICTE)</h3>
+        <span class="date">Mar 2025 - May 2025</span>
+      </div>
+      <ul>
+        <li>Built a resume screening system using NLP and Recurrent Neural Networks</li>
+        <li>Automated ranking based on job descriptions with 92% accuracy</li>
+        <li>Integrated the system with existing HR software</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Projects Page -->
+  <div id="projects" class="page">
+  <h2 class="section-title">Projects</h2>
+  
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-content">
+        <div class="project-header">
+          <h3>Resume Screening & Ranking System</h3>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">NLP</span>
+            <span class="tech-tag">Deep Learning</span>
+          </div>
+        </div>
+        <p class="project-desc">Automated analysis and ranking of 1000+ resumes using semantic matching with job descriptions with 92% accuracy.</p>
+        <ul class="project-features">
+          <li>Implemented BERT embeddings for semantic analysis</li>
+          <li>Built custom ranking algorithm</li>
+          <li>Reduced HR screening time by 70%</li>
+        </ul>
+        <a href="YOUR_GITHUB_LINK" class="github-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <div class="project-content">
+        <div class="project-header">
+          <h3>Educational Task Management</h3>
+          <div class="project-tech">
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">MySQL</span>
+          </div>
+        </div>
+        <p class="project-desc">Full-stack platform serving 500+ users with assignment tracking and deadline management.</p>
+        <ul class="project-features">
+          <li>JWT authentication system</li>
+          <li>Real-time notifications</li>
+          <li>PDF submission handling</li>
+        </ul>
+        <a href="YOUR_GITHUB_LINK" class="github-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+    
+    <div class="project-card">
+      <div class="project-content">
+        <div class="project-header">
+          <h3>Heart Beat Harbour</h3>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+        </div>
+        <p class="project-desc">Blood donation management system connecting 200+ donors with hospitals.</p>
+        <ul class="project-features">
+          <li>Geolocation-based donor matching</li>
+          <li>Emergency alert system</li>
+          <li>Donation history tracking</li>
+        </ul>
+        <a href="YOUR_GITHUB_LINK" class="github-link" target="_blank">
+          <i class="fab fa-github"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Certifications Page -->
+  <div id="certifications" class="page">
+  <h2 class="section-title">Certifications</h2>
+  
+  <div class="certifications-list">
+    <!-- Python Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Python - NPTEL SWAYAM (Elite)</h3>
+        <span class="date">2024</span>
+      </div>
+      <p>Completed advanced Python programming course with top 5% score</p>
+      <a href="https://drive.google.com/file/d/1u026DdJ68ZwYp_auMiXT1COXwJs7fbaL/view?usp=drive_link" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+    
+    <!-- Java Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Java - NPTEL SWAYAM (Elite)</h3>
+        <span class="date">2023</span>
+      </div>
+      <p>Object-oriented programming and advanced Java concepts</p>
+      <a href="https://drive.google.com/file/d/1HWbHg-8ODghL4TC_a05Nk4CF_3O3Xs3s/view?usp=drive_link" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+    
+    <!-- Cyber Security Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Cyber Security Essentials - CISCO</h3>
+        <span class="date">2023</span>
+      </div>
+      <p>Fundamentals of network security and cyber threats</p>
+      <a href="https://drive.google.com/file/d/1ubVzwqVaAtM6QmJXvGSuHkpMXi51NWN7/view?usp=drive_link" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+    
+    <!-- Ethical Hacking Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Ethical Hacking Workshop</h3>
+        <span class="date">2022</span>
+      </div>
+      <p>Hands-on training in penetration testing methodologies</p>
+      <a href="YOUR_GOOGLE_DRIVE_LINK_HACKING" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+	
+	<!-- Cyber Security Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Introduction to Cyber Security - CISCO</h3>
+        <span class="date">2023</span>
+      </div>
+      <p>Fundamentals of threat detection and defense</p>
+      <a href="https://drive.google.com/file/d/1hdUt8_P_iO0sH5yERkV9K4Yjp5-nja-F/view?usp=drive_link" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+	
+	<!-- Cyber Security Certification -->
+    <div class="certification-item">
+      <div class="certification-header">
+        <h3>Introduction to Packet Tracer - CISCO</h3>
+        <span class="date">2023</span>
+      </div>
+      
+      <a href="https://drive.google.com/file/d/1rqAQu4o4NB5FoGKpSr792AP4I8jNoCbz/view?usp=drive_link" class="cert-link" target="_blank">
+        <i class="fas fa-file-pdf"></i> View Certificate
+      </a>
+    </div>
+  </div>
+</div>
+
+  <script>
+    // Simple navigation system
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        // Hide all pages
+        document.querySelectorAll('.page').forEach(page => {
+          page.style.display = 'none';
+        });
+        
+        // Show selected page
+        const targetPage = document.querySelector(this.getAttribute('href'));
+        if (targetPage) {
+          targetPage.style.display = 'block';
+          window.scrollTo(0, 0);
+        }
+        
+        // Update active nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.classList.remove('active');
+        });
+        this.classList.add('active');
+      });
+    });
+    
+    // Show home page by default
+    document.querySelector('#home').style.display = 'block';
+    document.querySelector('.nav-links a[href="#home"]').classList.add('active');
+  </script>
+</body>
+</html>
